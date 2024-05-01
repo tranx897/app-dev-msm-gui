@@ -32,4 +32,14 @@ class MoviesController < ApplicationController
     # Redirect the user back to the /movies URL
     redirect_to("/movies")
   end
+
+  def destroy
+    movie_id = params["movie_id"]
+    matching_records = Movie.where({:id => movie_id})
+    the_movie = matching_records[0]
+    the_movie.destroy
+
+    redirect_to("/movies")
+  end
+
 end
