@@ -39,19 +39,17 @@ class ActorsController < ApplicationController
   end
   
   def update
-    movie_id = params["movie_id"]
-    matching_records = Movie.where({ :id => movie_id})
-    m = matching_records[0]
+    actor_id = params["actor_id"]
+    matching_records = Actor.where({ :id => actor_id})
+    a = matching_records[0]
 
-    m.title = params["the_title"]
-    m.year = params["the_year"]
-    m.duration = params["the_duration"]
-    m.description = params["the_description"]
-    m.image = params["the_image"]
-    m.director_id = params["the_director_id"]
+    a.name = params["name"]
+    a.dob = params["dob"]
+    a.bio = params["bio"]
+    a.image = params["image"]
 
-    m.save
+    a.save
 
-    redirect_to("/movies/#{m.id}")
+    redirect_to("/actors/#{a.id}")
   end
 end
