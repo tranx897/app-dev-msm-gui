@@ -41,5 +41,21 @@ class MoviesController < ApplicationController
 
     redirect_to("/movies")
   end
+  
+  def update
+    movie_id = params["movie_id"]
+    matching_records = Movie.where({ :id => movie_id})
+    m = matching_records[0]
 
+    m.title = params["the_title"]
+    m.year = params["the_year"]
+    m.duration = params["the_duration"]
+    m.description = params["the_description"]
+    m.image = params["the_image"]
+    m.director_id = params["the_director_id"]
+
+    m.save
+
+    redirect_to("/movies/#{m.id}")
+  end
 end
