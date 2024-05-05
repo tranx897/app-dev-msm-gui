@@ -30,12 +30,12 @@ class ActorsController < ApplicationController
   end
 
   def destroy
-    movie_id = params["movie_id"]
-    matching_records = Movie.where({:id => movie_id})
-    the_movie = matching_records[0]
-    the_movie.destroy
+    actor_id = params["actor_id"]
+    matching_records = Actor.where({:id => actor_id})
+    the_actor = matching_records[0]
+    the_actor.destroy
 
-    redirect_to("/movies")
+    redirect_to("/actors")
   end
   
   def update
